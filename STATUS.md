@@ -1,0 +1,46 @@
+# SpeakSmart - Project Status
+
+**Started:** 2026-03-05
+**Deadline:** March 15, 2026 (10 days)
+**Current Phase:** Phase 1 - Core Recording
+
+## Progress
+
+### Phase 1: Core Recording (Days 1-3) 🚧 IN PROGRESS
+- [x] Set up Xcode project with SwiftUI
+- [x] Implement Speech framework for dictation
+- [x] Basic recording UI with start/stop
+- [x] Display raw transcription
+- [x] Request microphone permission (declared in Info.plist)
+- [x] History view with local storage
+- [x] Rewrite view UI (AI integration pending API key)
+- [ ] Test on device/simulator
+- [ ] Handle edge cases and errors
+
+### Phase 2: AI Rewriting (Days 4-6)
+- [ ] Integrate OpenAI/Gemini API
+- [ ] Build tone selector UI
+- [ ] Implement rewrite service
+- [ ] Display original vs rewritten
+- [ ] Add format selection
+
+### Phase 3: History & Export (Days 7-8)
+- [ ] Core Data/SwiftData storage
+- [ ] History list view
+- [ ] Delete/archive functionality
+- [ ] Share sheet integration
+- [ ] Copy to clipboard
+
+### Phase 4: Polish & ASO (Days 9-10)
+- [ ] App icon and launch screen
+- [ ] Onboarding flow
+- [ ] Error handling
+- [ ] App Store screenshots
+- [ ] ASO metadata
+- [ ] Submit to App Store
+
+## Daily Log
+
+### 2026-03-05
+- Project initialized
+- Starting Phase 1: Core Recording
