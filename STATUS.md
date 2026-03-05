@@ -37,8 +37,8 @@
 - [x] Onboarding flow (4 pages with indicators)
 - [x] App icon asset catalog configured
 - [x] ASO metadata prepared (APP_STORE.md)
-- [ ] Launch screen
-- [ ] Error handling polish
+- [x] Launch screen (storyboard with app icon + title)
+- [x] Error handling polish (network monitor, offline banner, retry)
 - [ ] Screenshots for App Store
 - [ ] App Store submission
 
@@ -46,7 +46,6 @@
 None
 
 ## Notes
-- Phase 3 complete.
-- Phase 4: Onboarding done, ASO metadata ready, icon assets configured.
-- Need: Launch screen, final error handling polish, screenshots.
+- Phases 1-3 complete. Phase 4 nearly done.
+- Remaining: App Store screenshots + submission.
 - Target: App Store review submission by March 15.
