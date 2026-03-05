@@ -39,13 +39,18 @@
 - [x] ASO metadata prepared (APP_STORE.md)
 - [x] Launch screen (storyboard with app icon + title)
 - [x] Error handling polish (network monitor, offline banner, retry)
-- [ ] Screenshots for App Store
-- [ ] App Store submission
+- [x] Screenshot specs and plan (SCREENSHOTS.md)
+- [ ] Generate actual screenshots (needs Xcode + Simulator)
+- [ ] App Store submission (needs Apple Developer account)
 
 ## Blockers
-None
+1. **GitHub suspended:** Cannot push code to remote. AppMogLabs account suspended.
+2. **No Xcode:** Mac Mini has CLI tools only. Cannot build .app or take screenshots.
+3. **Apple Developer account:** Needed for App Store submission.
 
 ## Notes
-- Phases 1-3 complete. Phase 4 nearly done.
-- Remaining: App Store screenshots + submission.
+- Phases 1-3 complete. Phase 4 code complete.
+- All code exists locally, committed. Cannot push to GitHub.
+- Screenshot plan documented in SCREENSHOTS.md.
+- Operator needs to: restore GitHub access, install Xcode, provide Apple Developer credentials.
 - Target: App Store review submission by March 15.
