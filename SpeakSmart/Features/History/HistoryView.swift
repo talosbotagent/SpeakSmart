@@ -6,8 +6,9 @@
 import SwiftUI
 
 struct HistoryView: View {
-    @StateObject private var historyStore = HistoryStore()
+    @EnvironmentObject private var historyStore: HistoryStore
     @State private var searchText = ""
+    @State private var selectedRecording: Recording?
     
     var filteredRecordings: [Recording] {
         if searchText.isEmpty {
@@ -24,6 +25,10 @@ struct HistoryView: View {
             List {
                 ForEach(filteredRecordings) { recording in
                     RecordingRow(recording: recording)
+                        .contentShape(Rectangle())
+                        .onTapGesture {
+                            selectedRecording = recording
+                        }
                 }
                 .onDelete(perform: deleteRecordings)
             }
@@ -34,6 +39,9 @@ struct HistoryView: View {
                 if historyStore.recordings.isEmpty {
                     emptyStateView
                 }
+            }
+            .sheet(item: $selectedRecording) { recording in
+                RecordingDetailView(recording: recording)
             }
         }
     }

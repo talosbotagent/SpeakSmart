@@ -47,12 +47,10 @@
         <string>UIInterfaceOrientationPortraitUpsideDown</string>
     </array>
     
-    <!-- Speech Recognition Permission -->
-    <key>NSSpeechRecognitionUsageDescription</key>
-    <string>SpeakSmart needs access to speech recognition to transcribe your voice into text.</string>
-    
-    <!-- Microphone Permission -->
+    <!-- Required permissions for speech recognition -->
     <key>NSMicrophoneUsageDescription</key>
-    <string>SpeakSmart needs access to your microphone to record your voice.</string>
+    <string>SpeakSmart needs microphone access to record your voice for transcription.</string>
+    <key>NSSpeechRecognitionUsageDescription</key>
+    <string>SpeakSmart uses speech recognition to convert your voice into text.</string>
 </dict>
 </plist>

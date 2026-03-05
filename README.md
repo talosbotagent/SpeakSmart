@@ -4,80 +4,67 @@ AI Voice Writer iOS App — Transform spoken words into perfectly formatted text
 
 ## Features
 
-- 🎤 **Voice-to-Text** — Real-time dictation with high accuracy
-- ✨ **AI Rewriting** — Transform text into: Professional, Casual, Funny, Polite, Concise, Detailed
-- 📝 **Format Options** — Email, Notes, Message, Memo, Social Post
-- 📚 **History** — Save and organize previous recordings
-- 📤 **Export** — Share to any app, copy to clipboard
+- **Voice-to-Text** — Real-time dictation with high accuracy
+- **Tone Rewriting** — Professional, Casual, Funny, Polite, Concise, Detailed
+- **Format Options** — Email, Notes, Message, Memo, Social Post
+- **History** — Save and organize previous recordings
+- **Export** — Share to any app, copy to clipboard
 
 ## Tech Stack
 
 - **Language:** Swift
 - **UI Framework:** SwiftUI
 - **Speech Recognition:** Speech framework (Apple native)
-- **AI:** OpenAI GPT-4o-mini API for rewriting
-- **Storage:** UserDefaults (lightweight) / Core Data (scale)
-- **Minimum iOS:** 17.0
+- **AI:** OpenAI GPT-4o / Gemini API for rewriting
+- **Storage:** SwiftData
 
 ## Project Structure
 
 ```
 SpeakSmart/
 ├── App/
-│   ├── SpeakSmartApp.swift
-│   └── Info.plist
+│   ├── SpeakSmartApp.swift      # App entry point
+│   └── Info.plist               # Permissions
 ├── Features/
-│   ├── Recording/
-│   │   ├── RecordingView.swift
-│   │   ├── RecordingViewModel.swift
-│   │   ├── SpeechRecognizer.swift
-│   │   └── ContentView.swift
-│   ├── History/
-│   │   ├── HistoryView.swift
-│   │   └── HistoryStore.swift
-│   └── Rewrite/
-│       ├── RewriteView.swift
-│       └── RewriteViewModel.swift
-├── Services/
-│   └── AIService.swift
+│   ├── Recording/               # Voice recording & transcription
+│   ├── Transcription/           # Edit & tone selection
+│   ├── Rewrite/                 # AI rewriting (Phase 2)
+│   ├── History/                 # Saved recordings (Phase 3)
+│   └── Export/                  # Share & copy (Phase 3)
 ├── Models/
-│   └── Recording.swift
-└── Resources/
-    └── Assets.xcassets
+│   └── Tone.swift               # Data models
+└── Services/
+    ├── AIService.swift          # AI integration (Phase 2)
+    └── StorageService.swift     # Persistence (Phase 3)
 ```
 
 ## Setup
 
-1. Open `SpeakSmart.xcodeproj` in Xcode 15+
-2. Set your OpenAI API key in the environment or directly in `AIService.swift`
-3. Build and run on iOS 17+ simulator or device
+1. Open project in Xcode 15+
+2. Set your development team
+3. Build and run on iOS 17+ device or simulator
+4. Grant microphone and speech recognition permissions when prompted
 
-## Permissions
+## API Keys (Phase 2)
 
-The app requires:
-- **Microphone** — To record your voice
-- **Speech Recognition** — To transcribe speech to text
-
-These permissions are declared in `Info.plist`.
-
-## Build
-
-```bash
-# Open in Xcode
-open SpeakSmart.xcodeproj
-
-# Or build from command line
-xcodebuild -project SpeakSmart.xcodeproj -scheme SpeakSmart -destination 'platform=iOS Simulator,name=iPhone 15'
+Add to `Config.xcconfig` (gitignored):
+```
+OPENAI_API_KEY = your_key_here
 ```
 
-## TODO
+Or set in Xcode environment variables.
 
-- [ ] Add Core Data for persistent storage
-- [ ] Implement app icon and launch screen
-- [ ] Add onboarding flow
-- [ ] Create App Store screenshots
-- [ ] Submit to App Store
+## Phases
+
+- **Phase 1:** Recording + Transcription ✅
+- **Phase 2:** AI Rewriting
+- **Phase 3:** History & Export
+- **Phase 4:** Polish & App Store
+
+## Deadline
+
+March 15, 2026 — App Store submission
 
 ## License
 
-Copyright © 2026 App Mog. All rights reserved.
+Proprietary — App Mog Labs

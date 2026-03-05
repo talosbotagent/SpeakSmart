@@ -1,121 +1,204 @@
-//
-//  RecordingView.swift
-//  SpeakSmart
-//
-
 import SwiftUI
 
 struct RecordingView: View {
-    @ObservedObject var viewModel: RecordingViewModel
-    @State private var showRewrite = false
+    @StateObject private var speechRecognizer = SpeechRecognizer()
+    @EnvironmentObject private var historyStore: HistoryStore
+    @State private var showingTranscription = false
     
     var body: some View {
         NavigationStack {
-            VStack(spacing: 20) {
-                // Transcription Display
-                if viewModel.transcribedText.isEmpty {
-                    emptyStateView
-                } else {
-                    transcriptionView
+            VStack(spacing: 40) {
+                Spacer()
+                
+                // Status text
+                VStack(spacing: 12) {
+                    if speechRecognizer.isRecording {
+                        Text("Listening...")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.primary)
+                        
+                        Text("Tap to stop")
+                            .font(.subheadline)
+                            .foregroundColor(.secondary)
+                    } else {
+                        Text("Tap to record")
+                            .font(.title2)
+                            .fontWeight(.semibold)
+                            .foregroundColor(.primary)
+                        
+                        if speechRecognizer.transcript.isEmpty {
+                            Text("Speak naturally, we'll handle the rest")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        } else {
+                            Text("Tap to start new recording")
+                                .font(.subheadline)
+                                .foregroundColor(.secondary)
+                        }
+                    }
                 }
                 
                 Spacer()
                 
-                // Record Button
-                recordButton
+                // Transcription preview (when available)
+                if !speechRecognizer.transcript.isEmpty && !speechRecognizer.isRecording {
+                    VStack(alignment: .leading, spacing: 12) {
+                        HStack {
+                            Text("Transcription")
+                                .font(.headline)
+                                .foregroundColor(.primary)
+                            
+                            Spacer()
+                            
+                            NavigationLink("Edit →") {
+                                TranscriptionView(transcript: speechRecognizer.transcript)
+                                    .environmentObject(historyStore)
+                            }
+                            .font(.subheadline)
+                        }
+                        
+                        Text(speechRecognizer.transcript)
+                            .font(.body)
+                            .foregroundColor(.secondary)
+                            .lineLimit(4)
+                            .frame(maxWidth: .infinity, alignment: .leading)
+                    }
+                    .padding()
+                    .background(Color(.systemGray6))
+                    .cornerRadius(16)
+                    .padding(.horizontal)
+                }
+                
+                // Waveform visualization (placeholder during recording)
+                if speechRecognizer.isRecording {
+                    RecordingWaveform()
+                        .frame(height: 60)
+                        .padding(.horizontal, 40)
+                }
+                
+                Spacer()
+                
+                // Record button
+                RecordButton(isRecording: speechRecognizer.isRecording) {
+                    toggleRecording()
+                }
+                
+                Spacer()
+                    .frame(height: 60)
             }
             .padding()
             .navigationTitle("SpeakSmart")
-            .alert("Error", isPresented: $viewModel.showError) {
-                Button("OK") {}
+            .alert("Error", isPresented: .constant(speechRecognizer.errorMessage != nil)) {
+                Button("OK") {
+                    speechRecognizer.errorMessage = nil
+                }
             } message: {
-                Text(viewModel.errorMessage ?? "An unknown error occurred")
-            }
-            .sheet(isPresented: $showRewrite) {
-                RewriteView(originalText: viewModel.transcribedText)
+                Text(speechRecognizer.errorMessage ?? "")
             }
         }
     }
     
-    private var emptyStateView: some View {
-        VStack(spacing: 16) {
-            Spacer()
-            
-            Image(systemName: "waveform")
-                .font(.system(size: 80))
-                .foregroundColor(.gray.opacity(0.5))
-            
-            Text("Tap the microphone to start")
-                .font(.title3)
-                .foregroundColor(.secondary)
-            
-            Text("Speak clearly and we'll transcribe your words")
-                .font(.subheadline)
-                .foregroundColor(.secondary.opacity(0.7))
-            
-            Spacer()
-        }
-    }
-    
-    private var transcriptionView: some View {
-        VStack(alignment: .leading, spacing: 12) {
-            HStack {
-                Text("Transcription")
-                    .font(.headline)
-                    .foregroundColor(.primary)
-                
-                Spacer()
-                
-                Button(action: { viewModel.clearTranscription() }) {
-                    Image(systemName: "xmark.circle.fill")
-                        .foregroundColor(.secondary)
+    private func toggleRecording() {
+        if speechRecognizer.isRecording {
+            speechRecognizer.stopRecording()
+        } else {
+            Task {
+                do {
+                    try await speechRecognizer.startRecording()
+                } catch {
+                    speechRecognizer.errorMessage = error.localizedDescription
                 }
             }
-            
-            ScrollView {
-                Text(viewModel.transcribedText)
-                    .font(.body)
-                    .frame(maxWidth: .infinity, alignment: .leading)
-                    .padding()
-                    .background(Color(.systemGray6))
-                    .cornerRadius(12)
-            }
-            
-            Button(action: { showRewrite = true }) {
-                HStack {
-                    Image(systemName: "wand.and.stars")
-                    Text("Rewrite with AI")
-                }
-                .frame(maxWidth: .infinity)
-                .padding()
-                .background(Color.blue)
-                .foregroundColor(.white)
-                .cornerRadius(12)
-            }
         }
     }
+}
+
+// MARK: - Record Button
+
+struct RecordButton: View {
+    let isRecording: Bool
+    let action: () -> Void
     
-    private var recordButton: some View {
-        Button(action: { viewModel.toggleRecording() }) {
+    var body: some View {
+        Button(action: action) {
             ZStack {
+                // Outer ring pulse animation when recording
+                if isRecording {
+                    PulseRing()
+                }
+                
+                // Main button
                 Circle()
-                    .fill(viewModel.isRecording ? Color.red : Color.red.opacity(0.8))
+                    .fill(isRecording ? Color.red : Color.blue)
                     .frame(width: 80, height: 80)
                 
-                Circle()
-                    .stroke(viewModel.isRecording ? Color.red.opacity(0.3) : Color.clear, lineWidth: 4)
-                    .frame(width: viewModel.isRecording ? 100 : 80, height: viewModel.isRecording ? 100 : 80)
-                    .animation(.easeInOut(duration: 0.3), value: viewModel.isRecording)
-                
-                Image(systemName: viewModel.isRecording ? "stop.fill" : "mic.fill")
+                // Icon
+                Image(systemName: isRecording ? "stop.fill" : "mic.fill")
                     .font(.system(size: 32))
                     .foregroundColor(.white)
             }
         }
-        .padding(.bottom, 30)
+        .buttonStyle(PlainButtonStyle())
+    }
+}
+
+// MARK: - Pulse Ring Animation
+
+struct PulseRing: View {
+    @State private var animating = false
+    
+    var body: some View {
+        Circle()
+            .stroke(Color.red.opacity(0.3), lineWidth: 4)
+            .frame(width: 100, height: 100)
+            .scaleEffect(animating ? 1.3 : 1.0)
+            .opacity(animating ? 0 : 1)
+            .onAppear {
+                withAnimation(.easeOut(duration: 1.0).repeatForever(autoreverses: false)) {
+                    animating = true
+                }
+            }
+    }
+}
+
+// MARK: - Waveform Visualization
+
+struct RecordingWaveform: View {
+    @State private var phase = 0.0
+    
+    var body: some View {
+        HStack(spacing: 4) {
+            ForEach(0..<20) { index in
+                WaveformBar(index: index, phase: phase)
+            }
+        }
+        .onAppear {
+            withAnimation(.linear(duration: 0.1).repeatForever(autoreverses: false)) {
+                phase += .pi
+            }
+        }
+    }
+}
+
+struct WaveformBar: View {
+    let index: Int
+    let phase: Double
+    
+    var body: some View {
+        RoundedRectangle(cornerRadius: 2)
+            .fill(Color.red)
+            .frame(width: 6)
+            .frame(height: barHeight)
+    }
+    
+    private var barHeight: CGFloat {
+        let base = sin(Double(index) * 0.5 + phase) * 0.5 + 0.5
+        let random = Double.random(in: 0.3...1.0)
+        return CGFloat(base * random * 40 + 10)
     }
 }
 
 #Preview {
-    RecordingView(viewModel: RecordingViewModel())
+    RecordingView()
 }

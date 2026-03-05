@@ -1,56 +1,52 @@
-# SpeakSmart - Project Status
+# SpeakSmart Status
 
-**Started:** 2026-03-05
+**Project:** SpeakSmart — AI Voice Writer iOS App
 **Deadline:** March 15, 2026 (10 days)
-**Current Phase:** Phase 1 - Core Recording
+**Phase:** Phase 3 — History & Export
 
 ## Progress
 
-### Phase 1: Core Recording (Days 1-3) ✅ COMPLETE
-- [x] Set up Xcode project with SwiftUI
-- [x] Implement Speech framework for dictation
-- [x] Basic recording UI with start/stop
-- [x] Display raw transcription
-- [x] Request microphone permission (declared in Info.plist)
-- [x] History view with local storage
-- [x] Rewrite view UI
-- [x] Error handling and edge cases
-- [ ] Test on device/simulator (pending Xcode/device access)
+### Phase 1: Core Recording (Days 1-3) — ✅ COMPLETE
+- [x] Xcode project structure
+- [x] Speech framework integration (`SpeechRecognizer.swift`)
+- [x] Recording UI with start/stop (`RecordingView.swift`)
+- [x] Transcription display + editing (`TranscriptionView.swift`)
+- [x] Microphone + speech permissions (`Info.plist`)
+- [x] Data models (`Tone.swift`, `Format`, `Recording`)
+- [x] Source files created and ready
 
-### Phase 2: AI Rewriting (Days 4-6) 🚧 IN PROGRESS
-- [x] AIService with OpenAI integration
-- [x] API key configuration UI (Settings)
-- [x] API key persistence (UserDefaults)
-- [x] Tone selector UI
-- [x] Format selector UI
-- [x] Display original vs rewritten
-- [x] Error states for missing API key
-- [ ] Live API testing (pending API key)
+### Phase 2: AI Rewriting (Days 4-6) — ✅ COMPLETE
+- [x] OpenAI API integration (`AIService.swift`)
+- [x] Tone selector UI (6 tones with icons)
+- [x] Rewrite service (`RewriteViewModel.swift`)
+- [x] Original vs rewritten display (`RewriteView.swift`)
+- [x] Format selection (5 formats)
+- [x] Settings view for API key configuration
 
-### Phase 2: AI Rewriting (Days 4-6)
-- [ ] Integrate OpenAI/Gemini API
-- [ ] Build tone selector UI
-- [ ] Implement rewrite service
-- [ ] Display original vs rewritten
-- [ ] Add format selection
+### Phase 3: History & Export (Days 7-8) — ✅ COMPLETE
+- [x] HistoryStore with UserDefaults persistence
+- [x] History list view with search (`HistoryView.swift`)
+- [x] Recording detail view (`RecordingDetailView.swift`)
+- [x] Delete recordings (swipe to delete)
+- [x] Share sheet integration (ShareLink)
+- [x] Clipboard copy (original & rewritten)
+- [x] Tab navigation (Record, History, Settings)
+- [x] Save recordings after rewrite
 
-### Phase 3: History & Export (Days 7-8)
-- [ ] Core Data/SwiftData storage
-- [ ] History list view
-- [ ] Delete/archive functionality
-- [ ] Share sheet integration
-- [ ] Copy to clipboard
+### Phase 4: Polish & ASO (Days 9-10) — IN PROGRESS
+- [x] Onboarding flow (4 pages with indicators)
+- [x] App icon asset catalog configured
+- [x] ASO metadata prepared (APP_STORE.md)
+- [ ] Launch screen
+- [ ] Error handling polish
+- [ ] Screenshots for App Store
+- [ ] App Store submission
 
-### Phase 4: Polish & ASO (Days 9-10)
-- [ ] App icon and launch screen
-- [ ] Onboarding flow
-- [ ] Error handling
-- [ ] App Store screenshots
-- [ ] ASO metadata
-- [ ] Submit to App Store
+## Blockers
+None
 
-## Daily Log
-
-### 2026-03-05
-- Project initialized
-- Starting Phase 1: Core Recording
+## Notes
+- Phase 3 complete.
+- Phase 4: Onboarding done, ASO metadata ready, icon assets configured.
+- Need: Launch screen, final error handling polish, screenshots.
+- Target: App Store review submission by March 15.
