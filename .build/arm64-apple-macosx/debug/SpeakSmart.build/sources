@@ -1,0 +1,17 @@
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/App/SpeakSmartApp.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/History/HistoryStore.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/History/HistoryView.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/History/RecordingDetailView.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Onboarding/OnboardingView.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Recording/ContentView.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Recording/RecordingView.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Recording/RecordingViewModel.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Recording/SpeechRecognizer.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Rewrite/RewriteView.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Rewrite/RewriteViewModel.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Settings/SettingsView.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Transcription/TranscriptionView.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Models/Recording.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Models/Tone.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Services/AIService.swift
+/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Services/NetworkMonitor.swift

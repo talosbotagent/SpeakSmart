@@ -1,0 +1,124 @@
+{
+  "": {
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/master.swiftdeps"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/App/SpeakSmartApp.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SpeakSmartApp.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SpeakSmartApp.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SpeakSmartApp~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SpeakSmartApp.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SpeakSmartApp.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/History/HistoryStore.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/HistoryStore.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/HistoryStore.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/HistoryStore~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/HistoryStore.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/HistoryStore.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/History/HistoryView.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/HistoryView.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/HistoryView.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/HistoryView~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/HistoryView.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/HistoryView.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/History/RecordingDetailView.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingDetailView.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingDetailView.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingDetailView~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingDetailView.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingDetailView.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Onboarding/OnboardingView.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/OnboardingView.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/OnboardingView.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/OnboardingView~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/OnboardingView.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/OnboardingView.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Recording/ContentView.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/ContentView.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/ContentView.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/ContentView~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/ContentView.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/ContentView.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Recording/RecordingView.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingView.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingView.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingView~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingView.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingView.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Recording/RecordingViewModel.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingViewModel.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingViewModel.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingViewModel~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingViewModel.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RecordingViewModel.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Recording/SpeechRecognizer.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SpeechRecognizer.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SpeechRecognizer.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SpeechRecognizer~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SpeechRecognizer.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SpeechRecognizer.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Rewrite/RewriteView.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RewriteView.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RewriteView.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RewriteView~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RewriteView.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RewriteView.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Rewrite/RewriteViewModel.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RewriteViewModel.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RewriteViewModel.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RewriteViewModel~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RewriteViewModel.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/RewriteViewModel.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Settings/SettingsView.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SettingsView.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SettingsView.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SettingsView~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SettingsView.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/SettingsView.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Features/Transcription/TranscriptionView.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/TranscriptionView.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/TranscriptionView.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/TranscriptionView~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/TranscriptionView.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/TranscriptionView.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Models/Recording.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/Recording.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/Recording.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/Recording~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/Recording.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/Recording.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Models/Tone.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/Tone.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/Tone.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/Tone~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/Tone.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/Tone.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Services/AIService.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/AIService.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/AIService.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/AIService~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/AIService.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/AIService.dia"
+  },
+  "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/SpeakSmart/Services/NetworkMonitor.swift": {
+    "dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/NetworkMonitor.d",
+    "object": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/NetworkMonitor.swift.o",
+    "swiftmodule": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/NetworkMonitor~partial.swiftmodule",
+    "swift-dependencies": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/NetworkMonitor.swiftdeps",
+    "diagnostics": "/Users/user01/.openclaw/workspace-codie/projects/active/speaksmart/.build/arm64-apple-macosx/debug/SpeakSmart.build/NetworkMonitor.dia"
+  }
+}
