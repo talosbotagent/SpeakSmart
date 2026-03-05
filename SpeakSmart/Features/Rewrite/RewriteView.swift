@@ -63,6 +63,9 @@ struct RewriteView: View {
             } message: {
                 Text(viewModel.errorMessage ?? "An error occurred")
             }
+            .sheet(isPresented: $viewModel.showAPIKeyPrompt) {
+                SettingsView()
+            }
         }
     }
     

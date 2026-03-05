@@ -13,11 +13,18 @@ class RewriteViewModel: ObservableObject {
     @Published var isRewriting = false
     @Published var errorMessage: String?
     @Published var showError = false
+    @Published var showAPIKeyPrompt = false
     
-    private let aiService = AIService()
+    private let aiService = AIService.shared
     
     func rewrite(_ text: String) {
         guard !text.isEmpty else { return }
+        
+        // Check if API is configured
+        if !aiService.isConfigured {
+            showAPIKeyPrompt = true
+            return
+        }
         
         isRewriting = true
         rewrittenText = nil
@@ -30,6 +37,8 @@ class RewriteViewModel: ObservableObject {
                     format: selectedFormat
                 )
                 rewrittenText = result
+            } catch AIServiceError.noAPIKey {
+                showAPIKeyPrompt = true
             } catch {
                 errorMessage = error.localizedDescription
                 showError = true

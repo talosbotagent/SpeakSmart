@@ -6,16 +6,26 @@
 
 ## Progress
 
-### Phase 1: Core Recording (Days 1-3) 🚧 IN PROGRESS
+### Phase 1: Core Recording (Days 1-3) ✅ COMPLETE
 - [x] Set up Xcode project with SwiftUI
 - [x] Implement Speech framework for dictation
 - [x] Basic recording UI with start/stop
 - [x] Display raw transcription
 - [x] Request microphone permission (declared in Info.plist)
 - [x] History view with local storage
-- [x] Rewrite view UI (AI integration pending API key)
-- [ ] Test on device/simulator
-- [ ] Handle edge cases and errors
+- [x] Rewrite view UI
+- [x] Error handling and edge cases
+- [ ] Test on device/simulator (pending Xcode/device access)
+
+### Phase 2: AI Rewriting (Days 4-6) 🚧 IN PROGRESS
+- [x] AIService with OpenAI integration
+- [x] API key configuration UI (Settings)
+- [x] API key persistence (UserDefaults)
+- [x] Tone selector UI
+- [x] Format selector UI
+- [x] Display original vs rewritten
+- [x] Error states for missing API key
+- [ ] Live API testing (pending API key)
 
 ### Phase 2: AI Rewriting (Days 4-6)
 - [ ] Integrate OpenAI/Gemini API
