@@ -1,8 +1,8 @@
 # SpeakSmart Status
 
 **Project:** SpeakSmart — AI Voice Writer iOS App
-**Deadline:** March 15, 2026 (10 days)
-**Phase:** Phase 3 — History & Export
+**Deadline:** March 15, 2026 (9 days)
+**Phase:** Phase 4 — Polish & ASO (Code Complete)
 
 ## Progress
 
@@ -33,24 +33,29 @@
 - [x] Tab navigation (Record, History, Settings)
 - [x] Save recordings after rewrite
 
-### Phase 4: Polish & ASO (Days 9-10) — IN PROGRESS
+### Phase 4: Polish & ASO (Days 9-10) — CODE COMPLETE
 - [x] Onboarding flow (4 pages with indicators)
 - [x] App icon asset catalog configured
 - [x] ASO metadata prepared (APP_STORE.md)
 - [x] Launch screen (storyboard with app icon + title)
 - [x] Error handling polish (network monitor, offline banner, retry)
 - [x] Screenshot specs and plan (SCREENSHOTS.md)
-- [ ] Generate actual screenshots (needs Xcode + Simulator)
-- [ ] App Store submission (needs Apple Developer account)
+- [x] Fixed corrupted Xcode project (duplicate identifier issue)
+- [ ] Generate actual screenshots (blocked: iOS Simulator not installed)
+- [ ] App Store submission (blocked: Apple Developer account)
 
-## Blockers
-1. **GitHub suspended:** Cannot push code to remote. AppMogLabs account suspended.
-2. **No Xcode:** Mac Mini has CLI tools only. Cannot build .app or take screenshots.
+## Blockers (Updated March 6, 2026)
+1. **iOS Simulator not installed:** Xcode is present but iOS 26.2 platform not downloaded. Cannot build or generate screenshots.
+2. **GitHub suspended:** AppMogLabs org returns 404. Cannot push code or create releases.
 3. **Apple Developer account:** Needed for App Store submission.
 
 ## Notes
-- Phases 1-3 complete. Phase 4 code complete.
-- All code exists locally, committed. Cannot push to GitHub.
+- Phases 1-4 code complete.
+- Fixed corrupted Xcode project (March 6).
+- All code exists locally, committed. Cannot push to GitHub (suspended).
 - Screenshot plan documented in SCREENSHOTS.md.
-- Operator needs to: restore GitHub access, install Xcode, provide Apple Developer credentials.
-- Target: App Store review submission by March 15.
+- Operator needs to:
+  1. Install iOS Simulator (Xcode > Settings > Components > iOS 26.2 Simulator)
+  2. Restore GitHub access or create new org
+  3. Provide Apple Developer credentials
+- Target: App Store review submission by March 15 (9 days remaining).
