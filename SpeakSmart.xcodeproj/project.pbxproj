@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		AA000001 /* SpeakSmartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000011 /* SpeakSmartApp.swift */; };
-		AA000002 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000012 /* ContentView.swift */; };
 		AA000003 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000013 /* RecordingView.swift */; };
 		AA000004 /* RecordingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000014 /* RecordingViewModel.swift */; };
 		AA000005 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000015 /* SpeechRecognizer.swift */; };
@@ -20,12 +19,19 @@
 		AA00000B /* AIService.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00001B /* AIService.swift */; };
 		AA00000C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AA00001C /* Assets.xcassets */; };
 		AA00000D /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00002C /* SettingsView.swift */; };
+		AA000054 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000055 /* NetworkMonitor.swift */; };
+		AA000056 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000057 /* OnboardingView.swift */; };
+		AA000059 /* RecordingDetailView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00005A /* RecordingDetailView.swift */; };
+		AA00005B /* TranscriptionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00005C /* TranscriptionView.swift */; };
+		AA00005E /* Tone.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA00005F /* Tone.swift */; };
+		AA000060 /* Format.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000061 /* Format.swift */; };
+		AA000062 /* KeychainHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000063 /* KeychainHelper.swift */; };
+		AA000065 /* CreateNoteIntent.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000064 /* CreateNoteIntent.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		AA000010 /* SpeakSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		AA000011 /* SpeakSmartApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeakSmartApp.swift; sourceTree = "<group>"; };
-		AA000012 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		AA000013 /* RecordingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingView.swift; sourceTree = "<group>"; };
 		AA000014 /* RecordingViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingViewModel.swift; sourceTree = "<group>"; };
 		AA000015 /* SpeechRecognizer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SpeechRecognizer.swift; sourceTree = "<group>"; };
@@ -38,6 +44,14 @@
 		AA00001C /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		AA00001D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AA00002C /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
+		AA000055 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		AA000057 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
+		AA00005A /* RecordingDetailView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecordingDetailView.swift; sourceTree = "<group>"; };
+		AA00005C /* TranscriptionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TranscriptionView.swift; sourceTree = "<group>"; };
+		AA00005F /* Tone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Tone.swift; sourceTree = "<group>"; };
+		AA000061 /* Format.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Format.swift; sourceTree = "<group>"; };
+		AA000063 /* KeychainHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelper.swift; sourceTree = "<group>"; };
+		AA000064 /* CreateNoteIntent.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateNoteIntent.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,11 +65,20 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5907CAE02F5CDB4100FB73B5 /* Recovered References */ = {
+			isa = PBXGroup;
+			children = (
+				AA00001C /* Assets.xcassets */,
+			);
+			name = "Recovered References";
+			sourceTree = "<group>";
+		};
 		AA000000 = {
 			isa = PBXGroup;
 			children = (
 				AA000021 /* SpeakSmart */,
 				AA000030 /* Products */,
+				5907CAE02F5CDB4100FB73B5 /* Recovered References */,
 			);
 			sourceTree = "<group>";
 		};
@@ -64,6 +87,7 @@
 			children = (
 				AA000022 /* App */,
 				AA000023 /* Features */,
+				AA000066 /* Intents */,
 				AA000024 /* Services */,
 				AA000025 /* Models */,
 				AA000026 /* Resources */,
@@ -83,10 +107,12 @@
 		AA000023 /* Features */ = {
 			isa = PBXGroup;
 			children = (
+				AA000058 /* Onboarding */,
 				AA000027 /* Recording */,
 				AA000028 /* History */,
 				AA000029 /* Rewrite */,
 				AA00002B /* Settings */,
+				AA00005D /* Transcription */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -95,6 +121,8 @@
 			isa = PBXGroup;
 			children = (
 				AA00001B /* AIService.swift */,
+				AA000063 /* KeychainHelper.swift */,
+				AA000055 /* NetworkMonitor.swift */,
 			);
 			path = Services;
 			sourceTree = "<group>";
@@ -103,6 +131,8 @@
 			isa = PBXGroup;
 			children = (
 				AA00001A /* Recording.swift */,
+				AA00005F /* Tone.swift */,
+				AA000061 /* Format.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -118,7 +148,6 @@
 		AA000027 /* Recording */ = {
 			isa = PBXGroup;
 			children = (
-				AA000012 /* ContentView.swift */,
 				AA000013 /* RecordingView.swift */,
 				AA000014 /* RecordingViewModel.swift */,
 				AA000015 /* SpeechRecognizer.swift */,
@@ -131,6 +160,7 @@
 			children = (
 				AA000016 /* HistoryView.swift */,
 				AA000017 /* HistoryStore.swift */,
+				AA00005A /* RecordingDetailView.swift */,
 			);
 			path = History;
 			sourceTree = "<group>";
@@ -144,6 +174,13 @@
 			path = Rewrite;
 			sourceTree = "<group>";
 		};
+		AA00002A /* Assets.xcassets */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Assets.xcassets;
+			sourceTree = "<group>";
+		};
 		AA00002B /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -152,19 +189,36 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		AA00002A /* Assets.xcassets */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Assets.xcassets;
-			sourceTree = "<group>";
-		};
 		AA000030 /* Products */ = {
 			isa = PBXGroup;
 			children = (
 				AA000010 /* SpeakSmart.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		AA000058 /* Onboarding */ = {
+			isa = PBXGroup;
+			children = (
+				AA000057 /* OnboardingView.swift */,
+			);
+			path = Onboarding;
+			sourceTree = "<group>";
+		};
+		AA00005D /* Transcription */ = {
+			isa = PBXGroup;
+			children = (
+				AA00005C /* TranscriptionView.swift */,
+			);
+			path = Transcription;
+			sourceTree = "<group>";
+		};
+		AA000066 /* Intents */ = {
+			isa = PBXGroup;
+			children = (
+				AA000064 /* CreateNoteIntent.swift */,
+			);
+			path = Intents;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -237,7 +291,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				AA000001 /* SpeakSmartApp.swift in Sources */,
-				AA000002 /* ContentView.swift in Sources */,
 				AA000003 /* RecordingView.swift in Sources */,
 				AA000004 /* RecordingViewModel.swift in Sources */,
 				AA000005 /* SpeechRecognizer.swift in Sources */,
@@ -248,6 +301,14 @@
 				AA00000A /* Recording.swift in Sources */,
 				AA00000B /* AIService.swift in Sources */,
 				AA00000D /* SettingsView.swift in Sources */,
+				AA000054 /* NetworkMonitor.swift in Sources */,
+				AA000056 /* OnboardingView.swift in Sources */,
+				AA000059 /* RecordingDetailView.swift in Sources */,
+				AA00005B /* TranscriptionView.swift in Sources */,
+				AA00005E /* Tone.swift in Sources */,
+				AA000060 /* Format.swift in Sources */,
+				AA000062 /* KeychainHelper.swift in Sources */,
+				AA000065 /* CreateNoteIntent.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -262,6 +323,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = UGYRRU4N4D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpeakSmart/App/Info.plist;
@@ -292,6 +354,7 @@
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = UGYRRU4N4D;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpeakSmart/App/Info.plist;

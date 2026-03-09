@@ -51,19 +51,20 @@ struct RecordingDetailView: View {
                         Button(action: copyOriginal) {
                             Label("Copy Original", systemImage: "doc.on.doc")
                         }
-                        
+
                         if recording.rewrittenText != nil {
                             Button(action: copyRewritten) {
                                 Label("Copy Rewritten", systemImage: "doc.on.doc.fill")
                             }
                         }
-                        
+
                         ShareLink(item: shareText) {
                             Label("Share", systemImage: "square.and.arrow.up")
                         }
                     } label: {
                         Image(systemName: "ellipsis.circle")
                     }
+                    .accessibilityLabel("Actions menu")
                 }
             }
             .alert("Copied!", isPresented: $showCopyConfirmation) {
@@ -115,6 +116,7 @@ struct RecordingDetailView: View {
                     Image(systemName: "doc.on.doc")
                         .foregroundColor(.blue)
                 }
+                .accessibilityLabel("Copy \(title.lowercased()) text")
             }
             
             Text(text)
@@ -128,7 +130,13 @@ struct RecordingDetailView: View {
     
     private var shareText: String {
         if let rewritten = recording.rewrittenText {
-            return """\nOriginal:\n\(recording.originalText)\n\nRewritten:\n\(rewritten)\n"""
+            return """
+            Original:
+            \(recording.originalText)
+            
+            Rewritten:
+            \(rewritten)
+            """
         }
         return recording.originalText
     }

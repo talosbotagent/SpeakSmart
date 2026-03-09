@@ -3,14 +3,14 @@ import Network
 
 @MainActor
 class NetworkMonitor: ObservableObject {
-    @Published var isConnected = true
-    
     static let shared = NetworkMonitor()
+    
+    @Published var isConnected: Bool = true
     
     private let monitor = NWPathMonitor()
     private let queue = DispatchQueue(label: "NetworkMonitor")
     
-    init() {
+    private init() {
         monitor.pathUpdateHandler = { [weak self] path in
             DispatchQueue.main.async {
                 self?.isConnected = path.status == .satisfied

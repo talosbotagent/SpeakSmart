@@ -48,6 +48,8 @@ struct TranscriptionView: View {
                                 ) {
                                     selectedTone = tone
                                 }
+                                .accessibilityLabel("\(tone.rawValue) tone")
+                                .accessibilityAddTraits(selectedTone == tone ? .isSelected : [])
                             }
                         }
                     }
@@ -67,6 +69,8 @@ struct TranscriptionView: View {
                                 ) {
                                     selectedFormat = format
                                 }
+                                .accessibilityLabel("\(format.rawValue) format")
+                                .accessibilityAddTraits(selectedFormat == format ? .isSelected : [])
                             }
                         }
                     }
@@ -98,36 +102,14 @@ struct TranscriptionView: View {
             editedText = transcript
         }
         .sheet(isPresented: $showRewriteSheet) {
-            RewriteView(originalText: editedText) { recording in
+            RewriteView(
+                originalText: editedText,
+                initialTone: selectedTone,
+                initialFormat: selectedFormat
+            ) { recording in
                 historyStore.add(recording)
             }
         }
-    }
-}
-
-// MARK: - Tone Chip
-
-struct ToneChip: View {
-    let tone: Tone
-    let isSelected: Bool
-    let action: () -> Void
-    
-    var body: some View {
-        Button(action: action) {
-            HStack(spacing: 6) {
-                Image(systemName: tone.icon)
-                    .font(.system(size: 14))
-                Text(tone.rawValue)
-                    .font(.subheadline)
-                    .fontWeight(isSelected ? .semibold : .regular)
-            }
-            .padding(.horizontal, 14)
-            .padding(.vertical, 8)
-            .background(isSelected ? Color.blue : Color(.systemGray6))
-            .foregroundColor(isSelected ? .white : .primary)
-            .cornerRadius(20)
-        }
-        .buttonStyle(PlainButtonStyle())
     }
 }
 

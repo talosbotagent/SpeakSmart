@@ -6,21 +6,53 @@
 import SwiftUI
 
 struct SettingsView: View {
-    @StateObject private var aiService = AIService.shared
+    var isModal: Bool = false
+    @ObservedObject private var aiService = AIService.shared
     @State private var apiKey = ""
     @State private var showKey = false
     @State private var showSaved = false
+    @State private var keyIsPlaceholder = false
+    private let placeholderMask = String(repeating: "\u{2022}", count: 24)
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         NavigationStack {
             Form {
-                Section("AI Configuration") {
+                Section("AI Engine") {
                     HStack {
-                        Image(systemName: aiService.isConfigured ? "checkmark.circle.fill" : "exclamationmark.circle.fill")
+                        Image(systemName: aiService.appleIntelligenceAvailable ? "apple.logo" : "cloud")
                             .foregroundColor(aiService.isConfigured ? .green : .orange)
-                        
-                        Text(aiService.isConfigured ? "API Key Configured" : "API Key Required")
+
+                        VStack(alignment: .leading, spacing: 2) {
+                            Text("Active: \(aiService.activeEngine.rawValue)")
+                                .fontWeight(.medium)
+                            if aiService.appleIntelligenceAvailable {
+                                Text("On-device • No API key needed • Works offline")
+                                    .font(.caption)
+                                    .foregroundColor(.secondary)
+                            }
+                        }
+                    }
+
+                    if aiService.appleIntelligenceAvailable && !aiService.isConfigured {
+                        // Apple Intelligence only — no OpenAI fallback configured
+                    } else if !aiService.appleIntelligenceAvailable {
+                        HStack {
+                            Image(systemName: "exclamationmark.triangle")
+                                .foregroundColor(.orange)
+                            Text("Apple Intelligence not available on this device. OpenAI API key required.")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                }
+
+                Section("OpenAI API Key\(aiService.appleIntelligenceAvailable ? " (Fallback)" : "")") {
+                    HStack {
+                        Image(systemName: !apiKey.isEmpty && !keyIsPlaceholder || aiService.isConfigured && aiService.activeEngine == .openAI ? "checkmark.circle.fill" : "circle")
+                            .foregroundColor(!apiKey.isEmpty || aiService.activeEngine == .openAI ? .green : .secondary)
+
+                        Text(aiService.activeEngine == .openAI ? "API Key Configured" : aiService.appleIntelligenceAvailable ? "Optional — for higher-quality results" : "API Key Required")
                             .fontWeight(.medium)
                     }
                     
@@ -38,6 +70,7 @@ struct SettingsView: View {
                                 SecureField("sk-...", text: $apiKey)
                                     .textInputAutocapitalization(.never)
                                     .autocorrectionDisabled()
+                                    .accessibilityLabel("OpenAI API key")
                             }
                             
                             Button(action: { showKey.toggle() }) {
@@ -54,10 +87,11 @@ struct SettingsView: View {
                         }
                         .frame(maxWidth: .infinity)
                     }
-                    .disabled(apiKey.isEmpty)
+                    .disabled(apiKey.isEmpty || keyIsPlaceholder)
                     .buttonStyle(.borderedProminent)
+                    .accessibilityLabel("Save API key")
                     
-                    if aiService.isConfigured {
+                    if !aiService.apiKey.isEmpty {
                         Button(action: clearAPIKey) {
                             HStack {
                                 Image(systemName: "trash")
@@ -66,6 +100,7 @@ struct SettingsView: View {
                             .frame(maxWidth: .infinity)
                         }
                         .foregroundColor(.red)
+                        .accessibilityLabel("Remove API key")
                     }
                 }
                 
@@ -77,12 +112,14 @@ struct SettingsView: View {
                             .foregroundColor(.secondary)
                     }
                     
-                    Link(destination: URL(string: "https://platform.openai.com/api-keys")!) {
-                        HStack {
-                            Text("Get OpenAI API Key")
-                            Spacer()
-                            Image(systemName: "arrow.up.right.square")
-                                .foregroundColor(.secondary)
+                    if let url = URL(string: "https://platform.openai.com/api-keys") {
+                        Link(destination: url) {
+                            HStack {
+                                Text("Get OpenAI API Key")
+                                Spacer()
+                                Image(systemName: "arrow.up.right.square")
+                                    .foregroundColor(.secondary)
+                            }
                         }
                     }
                 }
@@ -102,8 +139,10 @@ struct SettingsView: View {
             .navigationTitle("Settings")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
-                ToolbarItem(placement: .cancellationAction) {
-                    Button("Done") { dismiss() }
+                if isModal {
+                    ToolbarItem(placement: .cancellationAction) {
+                        Button("Done") { dismiss() }
+                    }
                 }
             }
             .alert("Saved", isPresented: $showSaved) {
@@ -112,18 +151,25 @@ struct SettingsView: View {
                 Text("Your API key has been saved.")
             }
             .onAppear {
-                // Load current key masked
-                if aiService.isConfigured {
-                    apiKey = "••••••••••••••••••••••••"
+                if !aiService.apiKey.isEmpty {
+                    apiKey = placeholderMask
+                    keyIsPlaceholder = true
+                }
+            }
+            .onChange(of: apiKey) {
+                if keyIsPlaceholder && apiKey != placeholderMask {
+                    keyIsPlaceholder = false
                 }
             }
         }
     }
     
     private func saveAPIKey() {
+        guard !keyIsPlaceholder else { return }
         aiService.setAPIKey(apiKey)
         showSaved = true
-        apiKey = "••••••••••••••••••••••••"
+        apiKey = placeholderMask
+        keyIsPlaceholder = true
     }
     
     private func clearAPIKey() {

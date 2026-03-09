@@ -4,6 +4,15 @@
 //
 
 import Foundation
+#if canImport(FoundationModels)
+import FoundationModels
+#endif
+
+enum AIEngine: String {
+    case appleIntelligence = "Apple Intelligence"
+    case openAI = "OpenAI"
+    case none = "Not Configured"
+}
 
 enum AIServiceError: LocalizedError {
     case invalidResponse
@@ -28,16 +37,32 @@ enum AIServiceError: LocalizedError {
 @MainActor
 class AIService: ObservableObject {
     @Published var isConfigured = false
-    
+    @Published var activeEngine: AIEngine = .none
+    @Published var appleIntelligenceAvailable = false
+
     private let baseURL = "https://api.openai.com/v1/chat/completions"
-    private var apiKey: String = ""
-    
+    private(set) var apiKey: String = ""
+
+    private static let keychainKey = "com.speaksmart.openai-api-key"
+    private static let legacyDefaultsKey = "openai_api_key"
+
     static let shared = AIService()
-    
+
     init() {
+        migrateFromUserDefaultsIfNeeded()
         loadAPIKey()
+        updateActiveEngine()
     }
-    
+
+    private func migrateFromUserDefaultsIfNeeded() {
+        let defaults = UserDefaults.standard
+        guard let legacyKey = defaults.string(forKey: Self.legacyDefaultsKey), !legacyKey.isEmpty else {
+            return
+        }
+        _ = KeychainHelper.save(legacyKey, forKey: Self.keychainKey)
+        defaults.removeObject(forKey: Self.legacyDefaultsKey)
+    }
+
     func loadAPIKey() {
         // Try environment first (for development)
         if let envKey = ProcessInfo.processInfo.environment["OPENAI_API_KEY"], !envKey.isEmpty {
@@ -45,40 +70,77 @@ class AIService: ObservableObject {
             isConfigured = true
             return
         }
-        
-        // Then try UserDefaults (for production - user enters in app)
-        if let storedKey = UserDefaults.standard.string(forKey: "openai_api_key"), !storedKey.isEmpty {
+
+        // Then try Keychain
+        if let storedKey = KeychainHelper.loadString(forKey: Self.keychainKey), !storedKey.isEmpty {
             apiKey = storedKey
             isConfigured = true
         }
     }
-    
+
     func setAPIKey(_ key: String) {
         let trimmed = key.trimmingCharacters(in: .whitespacesAndNewlines)
         apiKey = trimmed
-        UserDefaults.standard.set(trimmed, forKey: "openai_api_key")
-        isConfigured = !trimmed.isEmpty
+        _ = KeychainHelper.save(trimmed, forKey: Self.keychainKey)
+        updateActiveEngine()
     }
-    
+
     func clearAPIKey() {
         apiKey = ""
-        UserDefaults.standard.removeObject(forKey: "openai_api_key")
-        isConfigured = false
+        KeychainHelper.delete(forKey: Self.keychainKey)
+        updateActiveEngine()
     }
-    
+
+    func updateActiveEngine() {
+        #if canImport(FoundationModels)
+        if #available(iOS 26, *) {
+            let model = SystemLanguageModel.default
+            appleIntelligenceAvailable = model.isAvailable
+            if model.isAvailable {
+                activeEngine = .appleIntelligence
+                isConfigured = true
+                return
+            }
+        }
+        #endif
+        if !apiKey.isEmpty {
+            activeEngine = .openAI
+            isConfigured = true
+        } else {
+            activeEngine = .none
+            isConfigured = false
+        }
+    }
+
     func rewrite(text: String, tone: Tone, format: Format) async throws -> String {
+        // Try Apple Intelligence first (on-device, free, works offline)
+        #if canImport(FoundationModels)
+        if #available(iOS 26, *), appleIntelligenceAvailable {
+            do {
+                return try await rewriteWithAppleIntelligence(text: text, tone: tone, format: format)
+            } catch {
+                // Fall through to OpenAI if Apple Intelligence fails
+                if !apiKey.isEmpty {
+                    // Log but continue to fallback
+                } else {
+                    throw AIServiceError.apiError("Apple Intelligence failed: \(error.localizedDescription)")
+                }
+            }
+        }
+        #endif
+
+        // Fall back to OpenAI
         guard !apiKey.isEmpty else {
-            // Fallback: simulate AI rewrite for testing/demo
             #if DEBUG
-            try await Task.sleep(nanoseconds: 1_000_000_000) // 1 second delay for realism
+            try await Task.sleep(nanoseconds: 1_000_000_000)
             return simulateRewrite(text: text, tone: tone, format: format)
             #else
             throw AIServiceError.noAPIKey
             #endif
         }
-        
+
         let prompt = buildPrompt(text: text, tone: tone, format: format)
-        
+
         let requestBody: [String: Any] = [
             "model": "gpt-4o-mini",
             "messages": [
@@ -129,6 +191,18 @@ class AIService: ObservableObject {
         }
     }
     
+    #if canImport(FoundationModels)
+    @available(iOS 26, *)
+    private func rewriteWithAppleIntelligence(text: String, tone: Tone, format: Format) async throws -> String {
+        let session = LanguageModelSession(
+            instructions: "You are a helpful writing assistant that rewrites text in different tones and formats. Respond only with the rewritten text, no explanations or preamble."
+        )
+        let prompt = buildPrompt(text: text, tone: tone, format: format)
+        let response = try await session.respond(to: prompt)
+        return response.content.trimmingCharacters(in: .whitespacesAndNewlines)
+    }
+    #endif
+
     private func buildPrompt(text: String, tone: Tone, format: Format) -> String {
         """
         Rewrite the following text in a \(tone.rawValue.lowercased()) tone, suitable for a \(format.rawValue.lowercased()).

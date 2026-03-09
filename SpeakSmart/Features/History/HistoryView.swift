@@ -29,6 +29,8 @@ struct HistoryView: View {
                         .onTapGesture {
                             selectedRecording = recording
                         }
+                        .accessibilityLabel("Recording from \(recording.createdAt.formatted(date: .abbreviated, time: .shortened))")
+                        .accessibilityHint("Double tap to view details")
                 }
                 .onDelete(perform: deleteRecordings)
             }
@@ -63,7 +65,11 @@ struct HistoryView: View {
     }
     
     private func deleteRecordings(at offsets: IndexSet) {
-        historyStore.delete(at: offsets)
+        let recordingsToDelete = offsets.map { filteredRecordings[$0] }
+        let sourceOffsets = IndexSet(recordingsToDelete.compactMap { recording in
+            historyStore.recordings.firstIndex(where: { $0.id == recording.id })
+        })
+        historyStore.delete(at: sourceOffsets)
     }
 }
 

@@ -7,17 +7,21 @@ import SwiftUI
 
 struct RewriteView: View {
     let originalText: String
+    var initialTone: Tone = .professional
+    var initialFormat: Format = .notes
     var onSave: ((Recording) -> Void)? = nil
     @Environment(\.dismiss) private var dismiss
     @StateObject private var viewModel = RewriteViewModel()
-    @StateObject private var networkMonitor = NetworkMonitor.shared
+    @ObservedObject private var networkMonitor = NetworkMonitor.shared
+    @ObservedObject private var aiService = AIService.shared
     @State private var showSaveConfirmation = false
+    @State private var showCopied = false
     
     var body: some View {
         NavigationStack {
             VStack(spacing: 16) {
-                // Offline banner
-                if !networkMonitor.isConnected {
+                // Offline banner — only show when Apple Intelligence is unavailable
+                if !networkMonitor.isConnected && !aiService.appleIntelligenceAvailable {
                     HStack(spacing: 8) {
                         Image(systemName: "wifi.slash")
                         Text("No internet connection")
@@ -30,6 +34,19 @@ struct RewriteView: View {
                     .cornerRadius(8)
                     .padding(.horizontal)
                 }
+
+                // AI engine indicator
+                if aiService.activeEngine != .none {
+                    HStack(spacing: 6) {
+                        Image(systemName: aiService.appleIntelligenceAvailable ? "apple.logo" : "cloud")
+                            .font(.caption2)
+                        Text("Using \(aiService.activeEngine.rawValue)")
+                            .font(.caption)
+                        Spacer()
+                    }
+                    .foregroundColor(.secondary)
+                    .padding(.horizontal)
+                }
                 // Tone Selector
                 ScrollView(.horizontal, showsIndicators: false) {
                     HStack(spacing: 12) {
@@ -37,6 +54,8 @@ struct RewriteView: View {
                             ToneChip(tone: tone, isSelected: viewModel.selectedTone == tone) {
                                 viewModel.selectedTone = tone
                             }
+                            .accessibilityLabel("\(tone.rawValue) tone")
+                            .accessibilityAddTraits(viewModel.selectedTone == tone ? .isSelected : [])
                         }
                     }
                     .padding(.horizontal)
@@ -54,7 +73,8 @@ struct RewriteView: View {
                 // Content
                 if viewModel.isRewriting {
                     Spacer()
-                    ProgressView("Rewriting with AI...")
+                    ProgressView("Rewriting with \(aiService.activeEngine.rawValue)...")
+                        .accessibilityLabel("Rewriting text with AI, please wait")
                     Spacer()
                 } else if let rewritten = viewModel.rewrittenText {
                     rewrittenView(rewritten)
@@ -66,11 +86,11 @@ struct RewriteView: View {
                         Label("Rewrite", systemImage: "sparkles")
                             .frame(maxWidth: .infinity)
                             .padding()
-                            .background(networkMonitor.isConnected ? Color.blue : Color.gray)
+                            .background(canRewrite ? Color.blue : Color.gray)
                             .foregroundColor(.white)
                             .cornerRadius(12)
                     }
-                    .disabled(!networkMonitor.isConnected)
+                    .disabled(!canRewrite)
                     .padding(.horizontal)
                 }
                 
@@ -80,12 +100,16 @@ struct RewriteView: View {
                 }
             }
             .padding(.vertical)
-            .navigationTitle("Rewrite")
+            .navigationTitle("Output")
             .navigationBarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .cancellationAction) {
                     Button("Cancel") { dismiss() }
                 }
+            }
+            .onAppear {
+                viewModel.selectedTone = initialTone
+                viewModel.selectedFormat = initialFormat
             }
             .alert("Error", isPresented: $viewModel.showError) {
                 Button("OK") {}
@@ -93,7 +117,7 @@ struct RewriteView: View {
                 Text(viewModel.errorMessage ?? "An error occurred")
             }
             .sheet(isPresented: $viewModel.showAPIKeyPrompt) {
-                SettingsView()
+                SettingsView(isModal: true)
             }
             .alert("Saved!", isPresented: $showSaveConfirmation) {
                 Button("OK") { dismiss() }
@@ -103,6 +127,11 @@ struct RewriteView: View {
         }
     }
     
+    private var canRewrite: Bool {
+        // Apple Intelligence works offline; OpenAI needs network
+        aiService.appleIntelligenceAvailable || networkMonitor.isConnected
+    }
+
     private var originalView: some View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
@@ -123,18 +152,25 @@ struct RewriteView: View {
         ScrollView {
             VStack(alignment: .leading, spacing: 12) {
                 HStack {
-                    Text("Rewritten")
-                        .font(.headline)
-                    
-                    Spacer()
-                    
-                    if let tone = viewModel.selectedTone {
-                        Label(tone.rawValue, systemImage: tone.icon)
+                    VStack(alignment: .leading, spacing: 2) {
+                        Text("Rewritten")
+                            .font(.headline)
+                        Label(viewModel.selectedTone.rawValue, systemImage: viewModel.selectedTone.icon)
                             .font(.caption)
                             .foregroundColor(.blue)
                     }
+
+                    Spacer()
+
+                    Button(showCopied ? "Copied!" : "Copy") {
+                        UIPasteboard.general.string = text
+                        showCopied = true
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1.5) { showCopied = false }
+                    }
+                    .font(.subheadline)
+                    .accessibilityLabel(showCopied ? "Text copied" : "Copy rewritten text")
                 }
-                
+
                 Text(text)
                     .font(.body)
                     .padding()
@@ -156,7 +192,7 @@ struct RewriteView: View {
                         .foregroundColor(.primary)
                         .cornerRadius(12)
                 }
-                
+
                 ShareLink(item: viewModel.rewrittenText ?? "") {
                     Label("Share", systemImage: "square.and.arrow.up")
                         .frame(maxWidth: .infinity)

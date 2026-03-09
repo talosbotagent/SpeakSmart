@@ -19,7 +19,7 @@ class RecordingViewModel: ObservableObject {
     private var cancellables = Set<AnyCancellable>()
     
     init() {
-        speechRecognizer.$transcribedText
+        speechRecognizer.$transcript
             .receive(on: DispatchQueue.main)
             .assign(to: &$transcribedText)
         

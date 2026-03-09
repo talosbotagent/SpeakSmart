@@ -20,8 +20,8 @@ class RewriteViewModel: ObservableObject {
     func rewrite(_ text: String) {
         guard !text.isEmpty else { return }
         
-        // Check if API is configured
-        if !aiService.isConfigured {
+        // Check if any AI engine is configured
+        if !aiService.isConfigured && !aiService.appleIntelligenceAvailable {
             showAPIKeyPrompt = true
             return
         }
