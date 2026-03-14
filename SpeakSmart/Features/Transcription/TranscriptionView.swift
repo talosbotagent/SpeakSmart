@@ -2,6 +2,8 @@ import SwiftUI
 
 struct TranscriptionView: View {
     let transcript: String
+    var initialTone: Tone?
+    var initialFormat: Format?
     @EnvironmentObject private var historyStore: HistoryStore
     @Environment(\.dismiss) private var dismiss
     @State private var editedText: String = ""
@@ -100,6 +102,12 @@ struct TranscriptionView: View {
         .navigationBarTitleDisplayMode(.large)
         .onAppear {
             editedText = transcript
+            if let tone = initialTone {
+                selectedTone = tone
+            }
+            if let format = initialFormat {
+                selectedFormat = format
+            }
         }
         .sheet(isPresented: $showRewriteSheet) {
             RewriteView(

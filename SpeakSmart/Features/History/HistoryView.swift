@@ -106,4 +106,5 @@ struct RecordingRow: View {
 
 #Preview {
     HistoryView()
+        .environmentObject(HistoryStore())
 }

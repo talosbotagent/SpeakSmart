@@ -41,7 +41,8 @@ class AIService: ObservableObject {
     @Published var appleIntelligenceAvailable = false
 
     private let baseURL = "https://api.openai.com/v1/chat/completions"
-    private(set) var apiKey: String = ""
+    private var apiKey: String = ""
+    var hasAPIKey: Bool { !apiKey.isEmpty }
 
     private static let keychainKey = "com.speaksmart.openai-api-key"
     private static let legacyDefaultsKey = "openai_api_key"

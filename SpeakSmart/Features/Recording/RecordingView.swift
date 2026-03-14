@@ -4,6 +4,8 @@ struct RecordingView: View {
     @StateObject private var speechRecognizer = SpeechRecognizer()
     @EnvironmentObject private var historyStore: HistoryStore
     @State private var showingTranscription = false
+    @State private var intentTone: Tone?
+    @State private var intentFormat: Format?
     
     var body: some View {
         NavigationStack {
@@ -53,7 +55,11 @@ struct RecordingView: View {
                             Spacer()
                             
                             NavigationLink("Next →") {
-                                TranscriptionView(transcript: speechRecognizer.transcript)
+                                TranscriptionView(
+                                    transcript: speechRecognizer.transcript,
+                                    initialTone: intentTone,
+                                    initialFormat: intentFormat
+                                )
                                     .environmentObject(historyStore)
                             }
                             .font(.subheadline)
@@ -97,7 +103,10 @@ struct RecordingView: View {
             }
             .padding()
             .navigationTitle("SpeakSmart")
-            .alert("Error", isPresented: .constant(speechRecognizer.errorMessage != nil)) {
+            .alert("Error", isPresented: Binding(
+                get: { speechRecognizer.errorMessage != nil },
+                set: { if !$0 { speechRecognizer.errorMessage = nil } }
+            )) {
                 Button("OK") {
                     speechRecognizer.errorMessage = nil
                 }
@@ -106,6 +115,12 @@ struct RecordingView: View {
             }
             .onReceive(NotificationCenter.default.publisher(for: .startRecordingFromIntent)) { notification in
                 if !speechRecognizer.isRecording {
+                    if let tone = notification.userInfo?["tone"] as? Tone {
+                        intentTone = tone
+                    }
+                    if let format = notification.userInfo?["format"] as? Format {
+                        intentFormat = format
+                    }
                     Task {
                         do {
                             try await speechRecognizer.startRecording()
@@ -246,4 +261,5 @@ struct WaveformBar: View {
 
 #Preview {
     RecordingView()
+        .environmentObject(HistoryStore())
 }

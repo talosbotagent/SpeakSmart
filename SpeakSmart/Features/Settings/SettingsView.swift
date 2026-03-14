@@ -91,7 +91,7 @@ struct SettingsView: View {
                     .buttonStyle(.borderedProminent)
                     .accessibilityLabel("Save API key")
                     
-                    if !aiService.apiKey.isEmpty {
+                    if aiService.hasAPIKey {
                         Button(action: clearAPIKey) {
                             HStack {
                                 Image(systemName: "trash")
@@ -151,7 +151,7 @@ struct SettingsView: View {
                 Text("Your API key has been saved.")
             }
             .onAppear {
-                if !aiService.apiKey.isEmpty {
+                if aiService.hasAPIKey {
                     apiKey = placeholderMask
                     keyIsPlaceholder = true
                 }
