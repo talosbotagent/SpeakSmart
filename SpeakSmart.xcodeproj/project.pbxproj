@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		38C589FDFD445337A9ED5C79 /* AIDisclosureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = DD7B45442BBA3862B345BDB2 /* AIDisclosureView.swift */; };
 		AA000001 /* SpeakSmartApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000011 /* SpeakSmartApp.swift */; };
 		AA000003 /* RecordingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000013 /* RecordingView.swift */; };
 		AA000005 /* SpeechRecognizer.swift in Sources */ = {isa = PBXBuildFile; fileRef = AA000015 /* SpeechRecognizer.swift */; };
@@ -32,7 +33,26 @@
 		BB000014 /* AIServiceTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000004 /* AIServiceTests.swift */; };
 		BB000015 /* KeychainHelperTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000005 /* KeychainHelperTests.swift */; };
 		BB000016 /* RewriteViewModelTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000006 /* RewriteViewModelTests.swift */; };
+		BB000017 /* AIDisclosureTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB000007 /* AIDisclosureTests.swift */; };
+		BB100001 /* ScreenshotTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = BB100010 /* ScreenshotTests.swift */; };
 /* End PBXBuildFile section */
+
+/* Begin PBXContainerItemProxy section */
+		BB000050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA000033 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA000031;
+			remoteInfo = SpeakSmart;
+		};
+		BB100050 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = AA000033 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = AA000031;
+			remoteInfo = SpeakSmart;
+		};
+/* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
 		AA000010 /* SpeakSmart.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = SpeakSmart.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,18 +82,12 @@
 		BB000004 /* AIServiceTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIServiceTests.swift; sourceTree = "<group>"; };
 		BB000005 /* KeychainHelperTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainHelperTests.swift; sourceTree = "<group>"; };
 		BB000006 /* RewriteViewModelTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RewriteViewModelTests.swift; sourceTree = "<group>"; };
+		BB000007 /* AIDisclosureTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AIDisclosureTests.swift; sourceTree = "<group>"; };
 		BB000020 /* SpeakSmartTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakSmartTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		BB100010 /* ScreenshotTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScreenshotTests.swift; sourceTree = "<group>"; };
+		BB100020 /* SpeakSmartScreenshots.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = SpeakSmartScreenshots.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		DD7B45442BBA3862B345BDB2 /* AIDisclosureView.swift */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = sourcecode.swift; name = AIDisclosureView.swift; path = AIDisclosureView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
-
-/* Begin PBXContainerItemProxy section */
-		BB000050 /* PBXContainerItemProxy */ = {
-			isa = PBXContainerItemProxy;
-			containerPortal = AA000033 /* Project object */;
-			proxyType = 1;
-			remoteGlobalIDString = AA000031;
-			remoteInfo = SpeakSmart;
-		};
-/* End PBXContainerItemProxy section */
 
 /* Begin PBXFrameworksBuildPhase section */
 		AA000020 /* Frameworks */ = {
@@ -84,6 +98,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BB000041 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB100041 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -101,11 +122,21 @@
 			name = "Recovered References";
 			sourceTree = "<group>";
 		};
+		979805F4CE95E88CCF73328B /* Disclosure */ = {
+			isa = PBXGroup;
+			children = (
+				DD7B45442BBA3862B345BDB2 /* AIDisclosureView.swift */,
+			);
+			name = Disclosure;
+			path = Disclosure;
+			sourceTree = "<group>";
+		};
 		AA000000 = {
 			isa = PBXGroup;
 			children = (
 				AA000021 /* SpeakSmart */,
 				BB000030 /* SpeakSmartTests */,
+				BB100030 /* SpeakSmartScreenshots */,
 				AA000030 /* Products */,
 				5907CAE02F5CDB4100FB73B5 /* Recovered References */,
 			);
@@ -142,6 +173,7 @@
 				AA000029 /* Rewrite */,
 				AA00002B /* Settings */,
 				AA00005D /* Transcription */,
+				979805F4CE95E88CCF73328B /* Disclosure */,
 			);
 			path = Features;
 			sourceTree = "<group>";
@@ -222,6 +254,7 @@
 			children = (
 				AA000010 /* SpeakSmart.app */,
 				BB000020 /* SpeakSmartTests.xctest */,
+				BB100020 /* SpeakSmartScreenshots.xctest */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -259,8 +292,17 @@
 				BB000004 /* AIServiceTests.swift */,
 				BB000005 /* KeychainHelperTests.swift */,
 				BB000006 /* RewriteViewModelTests.swift */,
+				BB000007 /* AIDisclosureTests.swift */,
 			);
 			path = SpeakSmartTests;
+			sourceTree = "<group>";
+		};
+		BB100030 /* SpeakSmartScreenshots */ = {
+			isa = PBXGroup;
+			children = (
+				BB100010 /* ScreenshotTests.swift */,
+			);
+			path = SpeakSmartScreenshots;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -301,6 +343,24 @@
 			productReference = BB000020 /* SpeakSmartTests.xctest */;
 			productType = "com.apple.product-type.bundle.unit-test";
 		};
+		BB100060 /* SpeakSmartScreenshots */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = BB100080 /* Build configuration list for PBXNativeTarget "SpeakSmartScreenshots" */;
+			buildPhases = (
+				BB100040 /* Sources */,
+				BB100041 /* Frameworks */,
+				BB100042 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				BB100051 /* PBXTargetDependency */,
+			);
+			name = SpeakSmartScreenshots;
+			productName = SpeakSmartScreenshots;
+			productReference = BB100020 /* SpeakSmartScreenshots.xctest */;
+			productType = "com.apple.product-type.bundle.ui-testing";
+		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
@@ -315,6 +375,10 @@
 						CreatedOnToolsVersion = 15.0;
 					};
 					BB000060 = {
+						CreatedOnToolsVersion = 15.0;
+						TestTargetID = AA000031;
+					};
+					BB100060 = {
 						CreatedOnToolsVersion = 15.0;
 						TestTargetID = AA000031;
 					};
@@ -335,6 +399,7 @@
 			targets = (
 				AA000031 /* SpeakSmart */,
 				BB000060 /* SpeakSmartTests */,
+				BB100060 /* SpeakSmartScreenshots */,
 			);
 		};
 /* End PBXProject section */
@@ -349,6 +414,13 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 		BB000042 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB100042 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -380,6 +452,7 @@
 				AA000060 /* Format.swift in Sources */,
 				AA000062 /* KeychainHelper.swift in Sources */,
 				AA000065 /* CreateNoteIntent.swift in Sources */,
+				38C589FDFD445337A9ED5C79 /* AIDisclosureView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -393,6 +466,15 @@
 				BB000014 /* AIServiceTests.swift in Sources */,
 				BB000015 /* KeychainHelperTests.swift in Sources */,
 				BB000016 /* RewriteViewModelTests.swift in Sources */,
+				BB000017 /* AIDisclosureTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+		BB100040 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				BB100001 /* ScreenshotTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -404,6 +486,11 @@
 			target = AA000031 /* SpeakSmart */;
 			targetProxy = BB000050 /* PBXContainerItemProxy */;
 		};
+		BB100051 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = AA000031 /* SpeakSmart */;
+			targetProxy = BB100050 /* PBXContainerItemProxy */;
+		};
 /* End PBXTargetDependency section */
 
 /* Begin XCBuildConfiguration section */
@@ -412,9 +499,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 45U54DJWKP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpeakSmart/App/Info.plist;
@@ -429,7 +518,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appmog.speaksmsmart;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appmog.speaksmartapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -442,9 +531,11 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
+				ASSETCATALOG_COMPILER_INCLUDE_ALL_APPICON_ASSETS = YES;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				DEVELOPMENT_ASSET_PATHS = "";
+				DEVELOPMENT_TEAM = 45U54DJWKP;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = SpeakSmart/App/Info.plist;
@@ -459,7 +550,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appmog.speaksmsmart;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appmog.speaksmartapp;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -595,11 +686,11 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appmog.speaksmsmart.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appmog.speaksmart.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
@@ -613,16 +704,50 @@
 			buildSettings = {
 				BUNDLE_LOADER = "$(TEST_HOST)";
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 1;
+				CURRENT_PROJECT_VERSION = 7;
 				GENERATE_INFOPLIST_FILE = YES;
 				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.appmog.speaksmsmart.tests;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appmog.speaksmart.tests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = NO;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/SpeakSmart.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/SpeakSmart";
+			};
+			name = Release;
+		};
+		BB100070 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appmog.speaksmart.screenshots;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SpeakSmart;
+			};
+			name = Debug;
+		};
+		BB100071 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 7;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.0;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = com.appmog.speaksmart.screenshots;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_TARGET_NAME = SpeakSmart;
 			};
 			name = Release;
 		};
@@ -652,6 +777,15 @@
 			buildConfigurations = (
 				BB000070 /* Debug */,
 				BB000071 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		BB100080 /* Build configuration list for PBXNativeTarget "SpeakSmartScreenshots" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				BB100070 /* Debug */,
+				BB100071 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;

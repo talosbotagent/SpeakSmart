@@ -4,11 +4,26 @@ import SwiftUI
 struct SpeakSmartApp: App {
     @StateObject private var historyStore = HistoryStore()
     @AppStorage("hasCompletedOnboarding") private var hasCompletedOnboarding = false
+    @AppStorage("hasAcceptedAIDisclosure") private var hasAcceptedAIDisclosure = false
     @State private var selectedTab = 0
+
+    init() {
+        // Handle UI testing launch arguments
+        if CommandLine.arguments.contains("--skip-onboarding") {
+            UserDefaults.standard.set(true, forKey: "hasCompletedOnboarding")
+        }
+        if CommandLine.arguments.contains("--skip-disclosure") {
+            UserDefaults.standard.set(true, forKey: "hasAcceptedAIDisclosure")
+        }
+    }
 
     var body: some Scene {
         WindowGroup {
-            if hasCompletedOnboarding {
+            if !hasCompletedOnboarding {
+                OnboardingView()
+            } else if !hasAcceptedAIDisclosure {
+                AIDisclosureView()
+            } else {
                 VStack(spacing: 0) {
                     // Custom top tab bar
                     HStack(spacing: 0) {
@@ -38,8 +53,6 @@ struct SpeakSmartApp: App {
                     }
                     .frame(maxHeight: .infinity)
                 }
-            } else {
-                OnboardingView()
             }
         }
     }

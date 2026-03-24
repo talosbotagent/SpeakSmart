@@ -12,6 +12,7 @@ struct SettingsView: View {
     @State private var showKey = false
     @State private var showSaved = false
     @State private var keyIsPlaceholder = false
+    @State private var showAIDisclosure = false
     private let placeholderMask = String(repeating: "\u{2022}", count: 24)
     @Environment(\.dismiss) private var dismiss
     
@@ -104,6 +105,20 @@ struct SettingsView: View {
                     }
                 }
                 
+                Section("Privacy") {
+                    Button(action: { showAIDisclosure = true }) {
+                        HStack {
+                            Label("AI Processing Notice", systemImage: "shield.checkered")
+                            Spacer()
+                            Image(systemName: "chevron.right")
+                                .font(.caption)
+                                .foregroundColor(.secondary)
+                        }
+                    }
+                    .foregroundColor(.primary)
+                    .accessibilityLabel("Review AI processing notice")
+                }
+                
                 Section("About") {
                     HStack {
                         Text("Version")
@@ -149,6 +164,9 @@ struct SettingsView: View {
                 Button("OK") {}
             } message: {
                 Text("Your API key has been saved.")
+            }
+            .sheet(isPresented: $showAIDisclosure) {
+                AIDisclosureView(isReviewMode: true)
             }
             .onAppear {
                 if aiService.hasAPIKey {
